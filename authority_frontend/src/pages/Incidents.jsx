@@ -29,7 +29,7 @@ export default function Incidents() {
   };
 
   const onDelete = async (id) => {
-    if (!window.confirm("Delete this report?")) return;
+    if (!window.confirm("Mark as Completed?")) return;
     try {
       await deleteReport(id);
       setReports(prev => prev.filter(r => r._id !== id));

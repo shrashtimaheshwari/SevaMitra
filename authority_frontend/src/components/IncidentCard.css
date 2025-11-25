@@ -49,6 +49,15 @@
   gap: 12px;
   margin-left: 16px;
 }
+.incident-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.incident-time {
+  color: var(--muted);
+}
 
 .action-btn {
   background: rgba(255,255,255,0.08);

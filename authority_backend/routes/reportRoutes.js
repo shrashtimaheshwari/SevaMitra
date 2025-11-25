@@ -48,28 +48,38 @@ module.exports = function (io) {
    * GET /api/reports/:id/image
    * Binary image endpoint (still supported)
    */
-  router.get('/:id/image', async (req, res) => {
-    try {
-      const { id } = req.params;
-      const rpt = await Report.findById(id).select('imageData imageMime');
+ // routes/reportRoutes.js (authority)
+router.get('/', auth, async (req, res) => {
+  try {
+    const page = parseInt(req.query.page || '1', 10);
+    const limit = Math.min(50, parseInt(req.query.limit || '50', 10));
+    const skip = (page - 1) * limit;
+    const q = { status: 'open' };
 
-      if (!rpt || !rpt.imageData) {
-        return res.status(404).send('Image not found');
+    if (req.query.category) q.category = req.query.category;
+    if (req.query.status) q.status = req.query.status;
+
+    const total = await Report.countDocuments(q);
+    const reports = await Report.find(q)
+      .sort({ createdAt: -1 })     // 👈 createdAt yahi se aata
+      .skip(skip)
+      .limit(limit)
+      .lean();
+
+    const sanitized = reports.map(r => {
+      if (r.imageData && r.imageData.buffer) {
+        r.imageBase64 = `data:${r.imageMime || "image/jpeg"};base64,${r.imageData.buffer.toString("base64")}`;
       }
+      return r;
+    });
 
-      const mime = rpt.imageMime || 'image/jpeg';
-      const data = rpt.imageData;
+    return res.json({ total, page, limit, items: sanitized });
+  } catch (err) {
+    console.error('Error fetching reports:', err);
+    return res.status(500).json({ message: 'Server error while fetching reports' });
+  }
+});
 
-      res.setHeader('Content-Type', mime);
-      res.setHeader('Content-Length', Buffer.byteLength(data));
-      res.setHeader('Cache-Control', 'public, max-age=86400');
-
-      return res.send(data);
-    } catch (err) {
-      console.error('Error serving image:', err);
-      return res.status(500).send('Server error while serving image');
-    }
-  });
 
   /**
    * PATCH /api/reports/:id/resolve
