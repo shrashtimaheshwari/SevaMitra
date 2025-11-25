@@ -1,0 +1,13 @@
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 240px; /* sidebar width */
+  padding: 20px;
+  transition: background 0.3s;
+}

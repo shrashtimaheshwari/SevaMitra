@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg-surface: #f6f7f9;
+  --panel: #ffffff;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --accent: #3b82f6;
+}
+
+.dark {
+  --bg-surface: #0b1220;
+  --panel: #0f1724;
+  --text: #e6eef8;
+  --muted: #94a3b8;
+  --accent: #60a5fa;
+}
+
+html, body, #root { height: 100%; font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background-color: var(--bg-surface); color: var(--text); }
+
+.container {
+  max-width: 980px;
+}
+
+.card {
+  background: var(--panel);
+  box-shadow: 0 8px 24px rgba(16,24,40,0.06);
+  border-radius: 12px;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.input, textarea {
+  background: color-mix(in srgb, var(--panel) 100%, transparent);
+  color: var(--text);
+  border: 1px solid rgba(15,23,42,0.06);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  transition: box-shadow .12s ease, border-color .12s ease;
+}
+.input:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 6px 18px rgba(59,130,246,0.12);
+  border-color: rgba(59,130,246,0.9);
+}
+
+.btn {
+  background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 85%, black 5%));
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(59,130,246,0.12);
+}
+.btn.secondary {
+  background: transparent;
+  border: 1px solid rgba(15,23,42,0.06);
+  color: var(--text);
+}
+
+.muted { color: var(--muted); }
+
+.form-row { margin-bottom: 0.9rem; }
+
+.divider { height: 1px; background: rgba(15,23,42,0.03); margin: 1rem 0; }
+
+select.input { -webkit-appearance: none; -moz-appearance: none; appearance: none; padding-right: 2rem; }
+
+@media (max-width: 640px) {
+  .card-body { padding: 0.75rem; border-radius: 10px; }
+}
+

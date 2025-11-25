@@ -1,0 +1,45 @@
+:root {
+  --bg: #f5f7fb;
+  --text: #0b1220;
+  --card: #ffffff;
+  --accent: #0ea5a4;
+  --muted: #6b7280;
+}
+
+body.dark {
+  --bg: #071029;
+  --text: #e6eef8;
+  --card: #0b1220;
+  --accent: #06b6d4;
+  --muted: #94a3b8;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Basic utilities */
+.card {
+  background: var(--card);
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.12);
+}
+.small { font-size: 13px; color: var(--muted); }
+button { cursor: pointer; }
+.filter-select {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 16px;
+}
+.filter-select:hover {
+  background: rgba(255,255,255,0.1);
+}

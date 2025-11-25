@@ -1,0 +1,78 @@
+.incident-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px;
+  margin: 12px 0;
+  border-radius: 12px;
+  transition: 0.3s ease-in-out;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.incident-card:hover {
+  transform: scale(1.02);
+  background: rgba(255,255,255,0.06);
+}
+
+.incident-title {
+  margin: 0 0 6px 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.incident-desc {
+  margin: 6px 0;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.incident-meta {
+  margin-top: 10px;
+  font-size: 14px;
+  display: grid;
+  gap: 4px;
+  color: #cfe9f5;
+}
+
+.incident-image {
+  width: 300px;
+  max-height: 200px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-top: 10px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.incident-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-left: 16px;
+}
+
+.action-btn {
+  background: rgba(255,255,255,0.08);
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.action-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.success {
+  color: #00ff88;
+}
+
+.danger {
+  color: #ff6b6b;
+}
+
+.resolved {
+  opacity: 0.6;
+}
