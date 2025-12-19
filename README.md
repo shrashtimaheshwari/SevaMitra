@@ -1,6 +1,5 @@
 # **SevaMitra – Crowdsourced Civic Issue Reporting & Resolution Platform**
 
-### *Developed during MediVerse Hackathon 2025 (Medicaps University)*
 
 SevaMitra is a platform that bridges the gap between **citizens**, **NGOs**, and **authorities** by providing a unified system for reporting and resolving civic issues.
 Users submit reports with **photos + location**, and authorities manage them through a dedicated dashboard.
